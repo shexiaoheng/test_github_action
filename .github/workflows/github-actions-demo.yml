@@ -15,7 +15,15 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: node -v
-      - run: npm -v
-      - run: java
+      - run: pwd
+      - run: pip install -r requirements.txt
+      - run: pytest hello.py --alluredir=allure-results --junitxml=reports/xml/report.xml
+      - run: allure generate results -o reports/allure
+      - name: Allure report
+        uses: afiore/action-allure-report@v0.1.0
+        with:
+          # Allure test result data dir
+          results-dir: allure-results
+          # Allure report target dir
+          report-dir: reports/allure-report
 
