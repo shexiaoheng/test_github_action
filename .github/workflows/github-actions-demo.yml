@@ -16,8 +16,3 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: pwd
-      - run: sudo npm install -g allure-commandline
-      - run: allure --version
-      - run: pip install -r requirements.txt
-      - run: pytest hello.py --alluredir=allure-results --junitxml=reports/xml/report.xml
-      - run: allure generate results -o reports/allure
