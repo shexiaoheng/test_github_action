@@ -18,3 +18,8 @@ jobs:
       - run: pwd
       - run: pytest hello.py --alluredir=results
       - run: allure generate results -o reports
+      - name: 🎁 Publishing Allure artifact to GitHub Actions
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: reports
